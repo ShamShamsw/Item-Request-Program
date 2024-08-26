@@ -1,0 +1,65 @@
+//create a program that utilizes the geter and setter method. Additionally their should be a private and public array. The private array should include information such as FirstName, LastName, RoomNumber, HawkCardNumber. Then their can be a public arrary that lists the option of items they can select. The program should ask the user to enter their information and select an item. Once the user has entered their information and selected an item, the program should display the information that the user entered and the item selected. Then the program should display a message that the item has been requested and the user will be notified when the item is available. The program should also have a method that allows the user to view the items that have been requested. */
+
+namespace Item_Request_Program
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Program program = new Program();
+            program.GetUserInformation();
+            program.GetItem();
+            program.DisplayInformation();
+        }
+
+        private string FirstName;
+        private string LastName;
+        private int RoomNumber;
+        private int HawkCardNumber;
+        private string ItemSelected;
+        private List<string> ItemsRequested = new List<string>();
+
+        public Program()
+        {
+            //Items that can be requested
+            ItemsRequested.Add("Shark");
+            ItemsRequested.Add("Whale");
+            ItemsRequested.Add("Penguin");
+            ItemsRequested.Add("Girafee");
+        }
+
+        public void GetUserInformation()
+        {
+            Console.Write("Enter your First Name: ");
+            FirstName = Console.ReadLine();
+            Console.Write("Enter your Last Name: ");
+            LastName = Console.ReadLine();
+            Console.Write("Enter your Room Number: ");
+            RoomNumber = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter your Hawk Card Number: ");
+            HawkCardNumber = Convert.ToInt32(Console.ReadLine());
+        }
+
+        public void GetItem()
+        {
+            Console.WriteLine("Items to select from: ");
+            for (int i = 0; i < ItemsRequested.Count; i++)
+            {
+                Console.WriteLine(ItemsRequested[i]);
+            }
+            Console.Write("Enter the item you would like to request: ");
+            ItemSelected = Console.ReadLine();
+        }
+
+        public void DisplayInformation()
+        {
+            Console.WriteLine("\nInformation Entered: ");
+            Console.WriteLine("First Name: " + FirstName);
+            Console.WriteLine("Last Name: " + LastName);
+            Console.WriteLine("Room Number: " + RoomNumber);
+            Console.WriteLine("Hawk Card Number: " + HawkCardNumber);
+            Console.WriteLine("Item Selected: " + ItemSelected);
+            Console.WriteLine("Item has been requested. You will be notified when the item is available.");
+        }
+    }
+}
